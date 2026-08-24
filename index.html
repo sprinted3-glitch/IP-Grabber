@@ -1,1 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield Club - Join the Future of Security</title>
+    <style>
+        /* ---- RESET & BASE ---- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e17;
+            color: #e0e6f0;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- GLOWING ANIMATED BACKGROUND ---- */
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(0, 180, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 200, 0.04) 0%, transparent 50%);
+            z-index: 0;
+            animation: pulseGlow 12s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.1) rotate(3deg);
+                opacity: 1;
+            }
+        }
+
+        /* ---- HEADER / NAV ---- */
+        header {
+            position: relative;
+            z-index: 2;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            backdrop-filter: blur(6px);
+            background: rgba(10, 14, 23, 0.7);
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #00d4ff;
+        }
+
+        .logo i {
+            font-style: normal;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #b0c4de;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .btn-outline {
+            border: 1.5px solid #00d4ff;
+            padding: 8px 22px;
+            border-radius: 30px;
+            color: #00d4ff;
+            font-weight: 600;
+            transition: 0.25s;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: #00d4ff;
+            color: #0a0e17;
+            box-shadow: 0 0 24px rgba(0, 212, 255, 0.3);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            position: relative;
+            z-index: 2;
+            padding: 80px 0 60px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1 1 500px;
+        }
+
+        .hero-text .badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.12);
+            color: #00d4ff;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .hero-text h1 {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 .highlight {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #b0c4de;
+            max-width: 540px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: #00d4ff;
+            color: #0a0e17;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.45);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #e0e6f0;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            transition: 0.25s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats div {
+            text-align: left;
+        }
+
+        .hero-stats .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .hero-stats .label {
+            font-size: 0.9rem;
+            color: #8899bb;
+        }
+
+        .hero-visual {
+            flex: 1 1 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .shield-icon {
+            font-size: 10rem;
+            line-height: 1;
+            filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.2));
+            animation: floatShield 5s ease-in-out infinite;
+        }
+
+        @keyframes floatShield {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+
+        /* ---- SECTION TITLES ---- */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #8899bb;
+            max-width: 640px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+        }
+
+        /* ---- WHY CYBERSECURITY ---- */
+        .why-section {
+            position: relative;
+            z-index: 2;
+            padding: 70px 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 212, 255, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .why-card .emoji {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+
+        .why-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            color: #b0c4de;
+            font-size: 0.95rem;
+        }
+
+        /* ---- CLUB ACTIVITIES ---- */
+        .activities-section {
+            position: relative;
+            z-index: 2;
+            padding: 60px 0;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+
+        .activity-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 28px 22px;
+            border-left: 4px solid #00d4ff;
+            transition: 0.25s;
+        }
+
+        .activity-item:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .activity-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .activity-item p {
+            color: #b0c4de;
+            font-size: 0.95rem;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            position: relative;
+            z-index: 2;
+            padding: 70px 0 50px;
+        }
+
+        .cta-box {
+            background: linear-gradient(145deg, rgba(0, 212, 255, 0.08), rgba(0, 255, 136, 0.04));
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 40px;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .cta-box h2 span {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-box p {
+            color: #b0c4de;
+            max-width: 500px;
+            margin: 16px auto 32px;
+            font-size: 1.1rem;
+        }
+
+        .cta-box .btn-primary {
+            font-size: 1.1rem;
+            padding: 16px 50px;
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            position: relative;
+            z-index: 2;
+            padding: 30px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: center;
+            color: #667799;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: #00d4ff;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-stats {
+                gap: 28px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+
+            .cta-box {
+                padding: 32px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .shield-icon {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <i>🛡️</i> Cyber<span>Shield</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Why Cyber</a>
+                <a href="#">Activities</a>
+                <a href="#" class="btn-outline">Join Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="container hero">
+        <div class="hero-text">
+            <div class="badge">🚀 Now recruiting – Fall 2026</div>
+            <h1>
+                Hack the future.<br />
+                <span class="highlight">Defend it.</span>
+            </h1>
+            <p>
+                CyberShield is your gateway into the world of cybersecurity —
+                no experience needed. Learn ethical hacking, protect real systems,
+                and build skills that matter.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Join the Club →</a>
+                <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="number">40+</div>
+                    <div class="label">Active Members</div>
+                </div>
+                <div>
+                    <div class="number">12</div>
+                    <div class="label">Workshops / Year</div>
+                </div>
+                <div>
+                    <div class="number">100%</div>
+                    <div class="label">Free for Students</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="shield-icon">🛡️</div>
+        </div>
+    </section>
+
+    <!-- WHY CYBERSECURITY -->
+    <section class="why-section">
+        <div class="container">
+            <h2 class="section-title">Why <span>Cybersecurity?</span></h2>
+            <p class="section-sub">
+                Every 39 seconds, a cyberattack happens. The world needs people
+                who can fight back — and that could be you.
+            </p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="emoji">💼</div>
+                    <h3>High Demand</h3>
+                    <p>There are over 500,000 unfilled cybersecurity jobs in the US alone.</p>
+                </div>
+                <div class="why-card">
+                    <div class="emoji">💰</div>
+                    <h3>Great Pay</h3>
+                    <p>Entry-level cybersecurity roles start at $80K+ — with no degree required.</p>
+                </div>
+                <div class="why-card">
+                    <div class="emoji">🧠</div>
+                    <h3>Always Learning</h3>
+                    <p>Every day is a puzzle. You'll never stop growing or solving new challenges.</p>
+                </div>
+                <div class="why-card">
+                    <div class="emoji">🌍</div>
+                    <h3>Global Impact</h3>
+                    <p>Protect hospitals, schools, and communities from real-world threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLUB ACTIVITIES -->
+    <section class="activities-section">
+        <div class="container">
+            <h2 class="section-title">What <span>We Do</span></h2>
+            <p class="section-sub">
+                No boring lectures. Just hands‑on, real‑world experiences.
+            </p>
+            <div class="activities-grid">
+                <div class="activity-item">
+                    <h4>🔐 Capture The Flag (CTF)</h4>
+                    <p>Compete in team-based hacking challenges — break in, find flags, win prizes.</p>
+                </div>
+                <div class="activity-item">
+                    <h4>🖥️ Ethical Hacking Labs</h4>
+                    <p>Practice with safe, legal environments like HackTheBox and TryHackMe.</p>
+                </div>
+                <div class="activity-item">
+                    <h4>👥 Guest Speakers</h4>
+                    <p>Hear from pros at Google, Microsoft, and top security firms.</p>
+                </div>
+                <div class="activity-item">
+                    <h4>🏆 Competitions</h4>
+                    <p>Represent our school in national cybersecurity tournaments.</p>
+                </div>
+                <div class="activity-item">
+                    <h4>📜 Cert Prep</h4>
+                    <p>Study groups for Security+, CEH, and other industry certs.</p>
+                </div>
+                <div class="activity-item">
+                    <h4>🤝 Community Outreach</h4>
+                    <p>Teach younger students about online safety and digital literacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to <span>level up</span>?</h2>
+                <p>
+                    Join CyberShield today — meet like‑minded people, build your
+                    resume, and start your journey in cybersecurity.
+                </p>
+                <a href="#" class="btn-primary">🚀 Join the Club Now</a>
+                <br /><br />
+                <p style="font-size:0.9rem; color:#667799;">
+                    First meeting: September 10th @ 3 PM — Room 204
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            &copy; 2026 CyberShield Club &bull; Built with 🛡️ by students, for students.
+        </div>
+    </footer>
+
+</body>
+</html>
