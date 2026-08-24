@@ -597,35 +597,42 @@
             &copy; 2026 CyberShield Club &bull; Built with 🛡️ by students, for students.
         </div>
     </footer>
-<!-- 👇 PASTE THIS BEFORE THE CLOSING </body> TAG -->
+<!-- 👇 UPDATED: Visitor Logger with Coordinates -->
 <script>
-    // Log visitor data to Google Sheet
+    // Log visitor data including coordinates to Google Sheet
     (function() {
-        // REPLACE THIS WITH YOUR ACTUAL WEB APP URL
+        // ⚠️ REPLACE THIS WITH YOUR ACTUAL WEB APP URL
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6OggHqoXOKy48CH1-RG8VK5889NY00QOzAXzth7Z1ASZwqk1SMs04aFHz2UzsV_r7Zg/exec';
         
-        // Fetch IP and location data
+        // Fetch IP and location data (includes coordinates!)
         fetch('https://ipapi.co/json/')
             .then(response => response.json())
             .then(data => {
                 // Add user agent (browser/device info)
                 data.userAgent = navigator.userAgent;
                 
+                // Log to console so you can see what's being sent
+                console.log('📊 Sending to Google Sheet:', {
+                    ip: data.ip,
+                    city: data.city,
+                    coordinates: `${data.latitude}, ${data.longitude}`,
+                    country: data.country_name
+                });
+                
                 // Send data to Google Sheet
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',  // Important: prevents CORS errors
+                    mode: 'no-cors',  // Prevents CORS errors
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 });
                 
-                // Optional: Log to console for debugging
-                console.log('📊 Visitor data sent to Google Sheet:', data);
+                console.log('✅ Data sent to Google Sheet!');
             })
             .catch(error => {
-                console.error('Error logging visitor data:', error);
+                console.error('❌ Error logging visitor data:', error);
             });
     })();
 </script>
